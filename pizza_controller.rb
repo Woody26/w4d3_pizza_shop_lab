@@ -15,7 +15,7 @@ end
 # clash with path (it would stop if it hit the one underneath
 #first)
 get "/pizza-orders/new" do
-    erb(:new)
+  erb(:new)
 end
 
 #POST REQUEST
@@ -35,7 +35,20 @@ end
 
 #DESTROY/DELETE REQUEST (D in CRUD)
 post "/pizza-orders/:id/delete" do
-    @order = PizzaOrder.find( params["id"] )
-    @order.delete()
-    erb(:delete_acknowledge)
+  @order = PizzaOrder.find( params["id"] )
+  @order.delete()
+  erb(:delete_acknowledge)
 end
+
+#EDIT
+get "/pizza-orders/:id/edit" do
+  @order = PizzaOrder.find( params["id"] )
+  erb(:edit)
+end
+
+#UPDATE
+# post "/pizza-orders/:id" do
+#   @order = PizzaOrder.find( params["id"] )
+#   @order.update()
+#   erb(:show)
+# end
